@@ -9,5 +9,7 @@ router.get("/empleados", controllerEmp.traerEmpleados);
 
 router.put("/actualizar", controllerEmp.modificarEmpleado);  
 
+router.delete("/borrar/:idempleados", controllerEmp.borrarEmpleado);  
+
 
 module.exports = router;

@@ -9,7 +9,7 @@ const crearEmpleado = (req, res) => {
             console.log(error);
             return res.status(500).json({ error: 'Error al crear empleado' });
         }else{
-            res.send("Empleado registrado con exito")
+            res.send(resultado)
         }
     });
 };
@@ -28,22 +28,41 @@ const traerEmpleados = (req, res) => {
 
 const modificarEmpleado = (req, res) =>{
     const { idempleados, nombre, edad, pais, cargo, anios } = req.body;
-    console.log(req.body.idempleados);
-    console.log(req.body.id);
 
     db.query('UPDATE empleados SET nombre=?, edad=?, pais=?, cargo=?, anios=? WHERE idempleados=?' , [nombre, edad, pais, cargo, anios, idempleados], (error, resultado) => {
         if (error) {
             console.log(error);
             return res.status(500).json({ error: 'Error al crear empleado' });
         }else{
-            res.send("Empleado actualizado con exito")
+            res.send(resultado)
         }
     });
 
 }
 
+const borrarEmpleado = (req, res) => {
+    const { idempleados } = req.params;
+
+    db.query('DELETE FROM empleados WHERE idempleados = ?', [idempleados], (error, resultado) => {
+        if (error) {
+            console.log(error);
+            return res.status(500).json({ error: 'Error al eliminar empleado' });
+        } else {
+            // Verifica si se eliminó alguna fila
+            if (resultado.affectedRows > 0) {
+                // Se eliminó al menos una fila, enviar respuesta de éxito
+                res.send('Empleado eliminado con éxito');
+            } else {
+                // No se encontró el empleado con el ID dado
+                res.status(404).json({ error: 'Empleado no encontrado' });
+            }
+        }
+    });
+};
+
 module.exports ={
     crearEmpleado,
     traerEmpleados,
-    modificarEmpleado   
+    modificarEmpleado,
+    borrarEmpleado,   
 }
