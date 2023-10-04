@@ -1,3 +1,6 @@
+# EmpleadosCrud
+Trabajo para gestionar un registro de empleados con su respectivo CRUD ademas de poner en practica mis conocimientos con MSQL + REACT + Node.js
+
 # Proyecto EmpleadosCrud React + Nodejs + Msql + Bootstrap
 
 ## Nombre del proyecto: Empleados
@@ -56,3 +59,4 @@
 ## Integrantes del Proyecto
 
 ###### - Nicolas Viruel :baby_chick:
+
