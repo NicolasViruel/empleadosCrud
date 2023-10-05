@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef  } from "react";
-import "./App.css";
 import Axios from "axios";
 import { Container, Row, Col, Form, Button, Table } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
