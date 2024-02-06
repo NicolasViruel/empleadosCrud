@@ -27,7 +27,7 @@ function App() {
     return;
     }
     try {
-      await Axios.post("http://localhost:3001/api/create", {
+      await Axios.post(`${process.env.VITE_BACKEND}/create`, {
         nombre: nombre,
         edad: edad,
         pais: pais,
@@ -151,7 +151,7 @@ function App() {
 
   const getEmpleados = async () => {
     try {
-      const response = await Axios.get("http://localhost:3001/api/empleados");
+      const response = await Axios.get(`${process.env.VITE_BACKEND}/empleados`);
       setEmpleados(response.data);
     } catch (error) {
       // Maneja el error aquí
